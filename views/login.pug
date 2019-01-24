@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Test
+    link(rel='stylesheet', type='text/css', href='/css/index.css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+    script(src='/js/index.js')
+  body
+    if message
+    h1.message= message
+    form#container(method='POST' action='/login')
+        span.input
+            input.input__field#input-4(type='email' name="email" required)
+            label.input__label(for='input-4')
+                span.input__label-content email
+        span.input
+            input.input__field#input-5(type='password' name="password" required) 
+            label.input__label(for='input-5')
+                span.input__label-content Haslo
+
+        button#send-button(type="submit") Zaloguj sie!
