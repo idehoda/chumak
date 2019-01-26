@@ -9,7 +9,16 @@ html
     script(src='/js/index.js')
   body
     if message
-    h1.message= message
+        h1.messageBar= message
+    if renderBar
+        .menu
+            ul
+                li.menu-item 
+                    a(href="/") Strona główna
+                li.menu-item
+                    a(href="/users") Uzytkownicy
+                li.menu-item 
+                    a(href="/register") Rejestracja
     form#container(method='POST' action='/login')
         span.input
             input.input__field#input-4(type='email' name="email" required)

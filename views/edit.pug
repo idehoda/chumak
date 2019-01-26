@@ -11,6 +11,16 @@ html
   body
     if message
         h1.messageBar= message
+    .status
+      h3= text
+        if isLogged
+          span.user-name= credentials.email
+      if isLogged
+        h3
+          a(href="/logout") wyloguj sie
+      else
+        h3
+          a(href="/login") zaloguj sie
     .menu
         ul
             li.menu-item 
@@ -19,30 +29,22 @@ html
                 a(href="/users") Uzytkownicy
             li.menu-item 
                 a(href="/register") Rejestracja
-    form#container(method='POST' action='/register')
+    form#container(method='POST' action=`/users/${credentials.student_id}`)
         span.input
-            input.input__field#input-1(type='text' name="name" required)
+            input.input__field#input-1(type='text' value=`${credentials.name}` name="name" required)
             label.input__label(for='input-1')
                 span.input__label-content Imie
         span.input
-            input.input__field#input-2(type='text' name="kierunek" required)
+            input.input__field#input-2(type='text' value=`${credentials.kierunek}` name="kierunek" required)
             label.input__label(for='input-2')
                 span.input__label-content kierunek
         span.input
-            input.input__field#input-3(type='tel' name="phone" required)
+            input.input__field#input-3(type='tel' value=`${credentials.phone}` name="phone" required)
             label.input__label(for='input-3')
                 span.input__label-content Telefon
         span.input
-            input.input__field#input-4(type='email' name="email" required)
+            input.input__field#input-4(type='email' value=`${credentials.email}` name="email" required)
             label.input__label(for='input-4')
                 span.input__label-content email
-        span.input
-            input.input__field#input-5(type='password' name="password" required) 
-            label.input__label(for='input-5')
-                span.input__label-content Haslo
-        span.input
-            input.input__field#input-6(type='password' name="confirm_password" required)
-            label.input__label(for='input-6')
-                span.input__label-content Powtorz haslo
 
-        button#send-button(type="submit") Zarejestruj sie!
+        button#send-button(type="submit") zapisz!

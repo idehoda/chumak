@@ -3,6 +3,7 @@ html
   head
     meta(charset='utf-8')
     title Test
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous")
     link(rel='stylesheet', type='text/css', href='/css/index.css')
     link(href='https://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
   body
@@ -32,12 +33,21 @@ html
           a(href="/register") Rejestracja
     .wrapper
       .inner
-        h1 Cześć! To jest testowa aplikacja z rejestracją , 
-        h1 logowaniem i podłączoną bazą danych
-          h2
-            a(href="/users") ⛳ Strona dla zalogowanych uzytkowników 👈
-          h2 Logowanie znajdziesz 
-            a(href="/login") 👉 tu
-          h2 Jeśli nie masz konta - 
-            a(href="/register") ⚠️ Zarejestruj się! ⚠️
+        if(!isLogged)
+          h1 Musisz sie 
+            a(href="/login") zalogować
+          h1 To jest strona dla zarejestrowanych uzytkownikow      
+          h2 jesli znajdziesz siebe tu - mozesz edytować profil     
+        else
+          h1 Cześć, #{credentials.name}! To jest strona dla uzytkownikow
+          ul
+            each student in students
+              li
+                .student= student.name
+                  a(href="/users/" + student.student_id)
+                    i.fas.fa-edit.elem
+                  a(href="/users/" + student.student_id)
+                    i.fas.fa-trash-alt.elem
+         
+          
       

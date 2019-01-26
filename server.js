@@ -12,7 +12,10 @@ const {
     registerPagePostHandler,
     loginPageHandler,
     loginPagePostHandler,
-    usersHandler
+    usersHandler,
+    logoutHandler,
+    idPageGetHandler,
+    idPagePostHandler
 } = require('./routes/index');
 
 
@@ -31,6 +34,10 @@ app.post('/register', registerPagePostHandler);
 
 app.get('/login', loginPageHandler);
 app.post('/login', loginPagePostHandler);
+app.get('/logout', logoutHandler);
+
+app.get('/users/:id', idPageGetHandler);
+app.post('/users/:id', idPagePostHandler);
 
 const port = 3000;
 app.listen(port, () => console.log(`listening on port ${port}`))
